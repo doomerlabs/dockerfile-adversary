@@ -28,13 +28,13 @@ jobs:
 
       - name: Run adversaries
         uses: adversarylabs/actions/run@v1
+        env:
+          CAMEL_API_KEY: ${{ secrets.CAMEL_API_KEY }}
         with:
           adversaries: auto
           path: .
           data-dir: /mnt/adversary
           include-summary: false
-          model-provider: camel
           model: auto
-          model-api-key: ${{ secrets.CAMEL_API_KEY }}
           auth-mode: oidc
           registry-namespace: adversarylabs
