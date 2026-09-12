@@ -27,7 +27,7 @@ jobs:
           path: /mnt/adversary
 
       - name: Run adversaries
-        uses: adversarylabs/actions/run@88f40e3774b0b7b4667700c5b9e1bbef6c6e5519 # v1.4.4
+        uses: adversarylabs/actions/run@v1
         with:
           adversaries: auto
           path: .
