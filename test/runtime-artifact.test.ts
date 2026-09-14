@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { copyFile, mkdir, mkdtemp, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -29,5 +29,5 @@ test("bundled runtime executes without node_modules and reports its release vers
   });
 
   assert.equal(result.adversary.name, "dockerfile");
-  assert.equal(result.adversary.version, "0.0.20");
+  assert.equal(result.adversary.version, (JSON.parse(await readFile(new URL("../package.json", import.meta.url), "utf8")) as { version: string }).version);
 });
