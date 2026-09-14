@@ -1,5 +1,5 @@
 name: adversarylabs/container/dockerfile
-version: 0.0.20
+version: 0.0.21
 description: Reviews Dockerfile-style files for container build and runtime security concerns.
 
 triggers:
