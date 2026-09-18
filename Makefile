@@ -19,5 +19,5 @@ REF ?=
 sign-dev:
 	@test -n "$(REF)" || (echo 'usage: make sign-dev REF=<registry>/<catalog-id>:<version>' >&2; exit 2)
 	@test -x "$(ADVERSARY)" || (echo "ADVERSARY not executable: $(ADVERSARY)" >&2; exit 2)
-	doppler run --project adversarylabs --config dev -- \
+	doppler run --project doomer --config dev -- \
 		"$(ADVERSARY)" sign "$(REF)" --key-id official-dev

@@ -58,7 +58,7 @@ jobs:
       - name: Synchronize release metadata
         id: version
         # domain/name catalog id support
-        uses: adversarylabs/actions/version@v1
+        uses: doomerlabs/actions/version@v1
         with:
           tag: ${{ github.ref_name }}
           path: .
@@ -69,7 +69,7 @@ jobs:
       - name: Push adversary
         id: push
         # domain/name remote refs
-        uses: adversarylabs/actions/push@v1
+        uses: doomerlabs/actions/push@v1
         with:
           # 2026.8.3+ publishes README.md and CHECKS.md as catalog OCI referrers.
           path: .
@@ -102,7 +102,7 @@ jobs:
             exit 1
           fi
           # Signer only needs private seed + key-id; user CLIs verify with release public key.
-          GOBIN="${RUNNER_TEMP}/bin" go install github.com/adversarylabs/adversary@2026.9.4
+          GOBIN="${RUNNER_TEMP}/bin" go install github.com/doomerlabs/adversary@8ef1591717b7bbcbb28b28f22e86b7d8c24b2e8c
           export PATH="${RUNNER_TEMP}/bin:$PATH"
           printf '%s\n' "$ADVERSARY_SERVICE_ACCOUNT_TOKEN" | adversary login --token-stdin --profile sign --registry-namespace adversarylabs
           trap 'adversary --profile sign logout --local-only >/dev/null 2>&1 || true' EXIT
