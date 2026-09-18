@@ -10,8 +10,8 @@
 ```sh
 npm ci
 npm test
-adversary validate .
-adversary pack --check .
+doomer validate .
+doomer pack --check .
 ```
 
 `npm test` builds the runtime before running the test suite.
