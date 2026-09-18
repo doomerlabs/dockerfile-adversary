@@ -102,10 +102,10 @@ jobs:
             exit 1
           fi
           # Signer only needs private seed + key-id; user CLIs verify with release public key.
-          GOBIN="${RUNNER_TEMP}/bin" go install github.com/doomerlabs/adversary@8ef1591717b7bbcbb28b28f22e86b7d8c24b2e8c
+          GOBIN="${RUNNER_TEMP}/bin" go install github.com/doomerlabs/doomer@baa847225f047fa38a427f723915686146aada20
           export PATH="${RUNNER_TEMP}/bin:$PATH"
-          printf '%s\n' "$ADVERSARY_SERVICE_ACCOUNT_TOKEN" | adversary login --token-stdin --profile sign --registry-namespace adversarylabs
-          trap 'adversary --profile sign logout --local-only >/dev/null 2>&1 || true' EXIT
-          adversary --profile sign sign "$REMOTE_REF" \
+          printf '%s\n' "$ADVERSARY_SERVICE_ACCOUNT_TOKEN" | doomer login --token-stdin --profile sign --registry-namespace adversarylabs
+          trap 'doomer --profile sign logout --local-only >/dev/null 2>&1 || true' EXIT
+          doomer --profile sign sign "$REMOTE_REF" \
             --digest "$SUBJECT_DIGEST" \
             --key-id official-prod
