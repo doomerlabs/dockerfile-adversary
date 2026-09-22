@@ -64,7 +64,7 @@ const SKIPPED_DIRECTORIES = new Set([
 
 export function createApp(): Adversary {
   registerDockerfileRules();
-  const app = new Adversary({ name: "dockerfile", version: "0.0.21" });
+  const app = new Adversary({ name: "dockerfile", version: "0.0.22" });
 
   app.rule("dockerfile.review", async (ctx) => {
     const dockerfiles = await loadDockerfiles(ctx);
